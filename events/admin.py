@@ -5,5 +5,4 @@ from .models import Event
 @admin.register(Event)
 class EventAdmin(admin.ModelAdmin):
     list_display = ("title", "start_datetime", "end_datetime", "category", "status")
-    list_filter = ("category", "status")
     search_fields = ("title", "description", "location")
