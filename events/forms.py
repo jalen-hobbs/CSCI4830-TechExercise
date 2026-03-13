@@ -4,10 +4,10 @@ from .models import Event
 
 class EventForm(forms.ModelForm):
     start_datetime = forms.DateTimeField(
-        widget=forms.DateTimeInput(attrs={"type": "datetime-local"}, input_formats=["%Y-%m-%dT%H:%M"])
+        widget=forms.DateTimeInput(attrs={"type": "datetime-local"})
     )
     end_datetime = forms.DateTimeField(
-        widget=forms.DateTimeInput(attrs={"type": "datetime-local"}, input_formats=["%Y-%m-%dT%H:%M"])
+        widget=forms.DateTimeInput(attrs={"type": "datetime-local"})
     )
 
     class Meta:
