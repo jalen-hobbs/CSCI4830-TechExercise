@@ -6,7 +6,7 @@
 {% for day in days %}
     <h3>{{ day.date }}</h3>
     {% for event in day.events %}
-        <div class="event-card">
+        <div class="event-card category-{{ event.category }}">
             <a href="{% url 'event_detail' event.pk %}">{{ event.title }}</a>
             <p>{{ event.start_datetime|date:"g:i A" }} - {{ event.end_datetime|date:"g:i A" }}</p>
         </div>

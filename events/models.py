@@ -17,7 +17,7 @@ class Event(models.Model):
     end_datetime = models.DateTimeField()
     location = models.CharField(max_length=200, blank=True)
     category = models.CharField(max_length=20, choices=CATEGORY_CHOICES, default="personal")
-    is_cancelled = models.BooleanField(default=False)
+    is_cancelled = models.BooleanField(default=False, verbose_name="Cancel Event")
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 
