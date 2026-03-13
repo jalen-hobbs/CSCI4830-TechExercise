@@ -4,6 +4,24 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>easyPlan</title>
+    <div class="nav-links">
+        <a class="btn" href="{% url 'event_list' %}">List View</a>
+
+        <a class="btn"
+           href="{% url 'day_view' today.year today.month today.day %}">
+           Day View
+        </a>
+
+        <a class="btn"
+           href="{% url 'week_view' today.year today.month today.day %}">
+           Week View
+        </a>
+
+        <a class="btn"
+           href="{% url 'month_view' today.year today.month %}">
+           Month View
+        </a>
+    </div>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -49,6 +67,20 @@
         }
         .errorlist {
             color: red;
+        }
+        .category-school {
+            background: #dbeafe;
+            border-left: 6px solid #2563eb;
+        }
+
+        .category-work {
+            background: #dcfce7;
+            border-left: 6px solid #16a34a;
+        }
+
+        .category-personal {
+            background: #ffedd5;
+            border-left: 6px solid #ea580c;
         }
     </style>
 </head>

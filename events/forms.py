@@ -19,5 +19,5 @@ class EventForm(forms.ModelForm):
             "end_datetime",
             "location",
             "category",
-            "status",
+            "is_cancelled",
         ]
