@@ -1,0 +1,18 @@
+{% extends "events/base.html" %}
+
+{% block content %}
+    <h2>{{ event.title }}</h2>
+
+    <p><strong>Description:</strong></p>
+    <p>{{ event.description|default:"No description provided." }}</p>
+
+    <p><strong>Start:</strong> {{ event.start_datetime }}</p>
+    <p><strong>End:</strong> {{ event.end_datetime }}</p>
+    <p><strong>Category:</strong> {{ event.get_category_display }}</p>
+    <p><strong>Status:</strong> {{ event.status }}</p>
+    <p><strong>Location:</strong> {{ event.location|default:"N/A" }}</p>
+
+    <a class="btn" href="{% url 'event_edit' event.pk %}">Edit</a>
+    <a class="btn" href="{% url 'event_delete' event.pk %}">Delete</a>
+    <a class="btn" href="{% url 'event_list' %}">Back</a>
+{% endblock %}

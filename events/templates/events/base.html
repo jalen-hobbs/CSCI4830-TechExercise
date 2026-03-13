@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>easyPlan</title>
+    <div class="nav-links">
+        <a class="btn" href="{% url 'event_list' %}">List View</a>
+
+        <a class="btn"
+           href="{% url 'day_view' today.year today.month today.day %}">
+           Day View
+        </a>
+
+        <a class="btn"
+           href="{% url 'week_view' today.year today.month today.day %}">
+           Week View
+        </a>
+
+        <a class="btn"
+           href="{% url 'month_view' today.year today.month %}">
+           Month View
+        </a>
+    </div>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 40px;
+            background: #f7f7f7;
+        }
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            background: white;
+            padding: 24px;
+            border-radius: 10px;
+        }
+        a {
+            text-decoration: none;
+        }
+        .top-bar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 24px;
+        }
+        .btn {
+            display: inline-block;
+            padding: 8px 12px;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+            margin-right: 8px;
+        }
+        .event-card {
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            padding: 16px;
+            margin-bottom: 16px;
+        }
+        .form-row {
+            margin-bottom: 12px;
+        }
+        input, textarea, select {
+            width: 100%;
+            padding: 8px;
+            box-sizing: border-box;
+        }
+        .errorlist {
+            color: red;
+        }
+        .category-school {
+            background: #dbeafe;
+            border-left: 6px solid #2563eb;
+        }
+
+        .category-work {
+            background: #dcfce7;
+            border-left: 6px solid #16a34a;
+        }
+
+        .category-personal {
+            background: #ffedd5;
+            border-left: 6px solid #ea580c;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="top-bar">
+            <h1><a href="{% url 'event_list' %}">easyPlan</a></h1>
+            <a class="btn" href="{% url 'event_create' %}">+ Add Event</a>
+        </div>
+
+        {% block content %}{% endblock %}
+    </div>
+</body>
+</html>

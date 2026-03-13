@@ -1,0 +1,32 @@
+{% extends "events/base.html" %}
+
+{% block content %}
+<h2>{{ month_name }} {{ year }}</h2>
+
+<table border="1" cellpadding="8" style="width:100%; border-collapse: collapse;">
+    <tr>
+        <th>Sun</th>
+        <th>Mon</th>
+        <th>Tue</th>
+        <th>Wed</th>
+        <th>Thu</th>
+        <th>Fri</th>
+        <th>Sat</th>
+    </tr>
+
+    {% for week in weeks %}
+    <tr>
+        {% for day in week %}
+        <td style="vertical-align: top; height: 120px; {% if not day.in_month %}background:#f0f0f0;{% endif %}">
+            <strong>{{ day.date.day }}</strong>
+            {% for event in day.events %}
+                <div class="category-{{ event.category }}" style="margin-top: 6px; padding: 4px; border: 1px solid #ccc; border-radius: 4px;">
+                    <a href="{% url 'event_detail' event.pk %}">{{ event.title }}</a>
+                </div>
+            {% endfor %}
+        </td>
+        {% endfor %}
+    </tr>
+    {% endfor %}
+</table>
+{% endblock %}

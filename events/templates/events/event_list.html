@@ -1,0 +1,39 @@
+{% extends "events/base.html" %}
+
+{% block content %}
+<h2>All Events</h2>
+
+<form method="get" style="margin-bottom: 20px;">
+    <input type="text" name="q" placeholder="Search events..." value="{{ request.GET.q }}">
+
+    <select name="category">
+        <option value="">All Categories</option>
+        <option value="school" {% if request.GET.category == "school" %}selected{% endif %}>School</option>
+        <option value="work" {% if request.GET.category == "work" %}selected{% endif %}>Work</option>
+        <option value="personal" {% if request.GET.category == "personal" %}selected{% endif %}>Personal</option>
+    </select>
+
+    <button class="btn" type="submit">Apply</button>
+    <a class="btn" href="{% url 'event_list' %}">Clear</a>
+</form>
+
+{% if events %}
+    {% for event in events %}
+        <div class="event-card category-{{ event.category }}">
+            <h3><a href="{% url 'event_detail' event.pk %}">{{ event.title }}</a></h3>
+            <p><strong>Start:</strong> {{ event.start_datetime|date:"M d, Y g:i A" }}</p>
+            <p><strong>End:</strong> {{ event.end_datetime|date:"M d, Y g:i A" }}</p>
+            <p><strong>Category:</strong> {{ event.get_category_display }}</p>
+            <p><strong>Status:</strong> {{ event.status }}</p>
+            {% if event.location %}
+                <p><strong>Location:</strong> {{ event.location }}</p>
+            {% endif %}
+            <a class="btn" href="{% url 'event_detail' event.pk %}">View</a>
+            <a class="btn" href="{% url 'event_edit' event.pk %}">Edit</a>
+            <a class="btn" href="{% url 'event_delete' event.pk %}">Delete</a>
+        </div>
+    {% endfor %}
+{% else %}
+    <p>No events found.</p>
+{% endif %}
+{% endblock %}
