@@ -1,0 +1,17 @@
+{% extends "events/base.html" %}
+
+{% block content %}
+<h2>Week View: {{ start_of_week }} to {{ end_of_week }}</h2>
+
+{% for day in days %}
+    <h3>{{ day.date }}</h3>
+    {% for event in day.events %}
+        <div class="event-card">
+            <a href="{% url 'event_detail' event.pk %}">{{ event.title }}</a>
+            <p>{{ event.start_datetime|date:"g:i A" }} - {{ event.end_datetime|date:"g:i A" }}</p>
+        </div>
+    {% empty %}
+        <p>No events.</p>
+    {% endfor %}
+{% endfor %}
+{% endblock %}
