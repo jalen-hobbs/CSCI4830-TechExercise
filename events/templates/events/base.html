@@ -4,11 +4,23 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>easyPlan</title>
-    <div style="margin-bottom:20px;">
-        <a class="btn" href="{% url 'event_list' %}">List</a>
-        <a class="btn" href="/calendar/day/2026/3/18/">Day</a>
-        <a class="btn" href="/calendar/week/2026/3/18/">Week</a>
-        <a class="btn" href="/calendar/month/2026/3/">Month</a>
+    <div class="nav-links">
+        <a class="btn" href="{% url 'event_list' %}">List View</a>
+
+        <a class="btn"
+           href="{% url 'day_view' today.year today.month today.day %}">
+           Day View
+        </a>
+
+        <a class="btn"
+           href="{% url 'week_view' today.year today.month today.day %}">
+           Week View
+        </a>
+
+        <a class="btn"
+           href="{% url 'month_view' today.year today.month %}">
+           Month View
+        </a>
     </div>
     <style>
         body {
